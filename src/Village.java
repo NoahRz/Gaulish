@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class App {
+public class Village {
 
     private HashMap<Potion, Integer> registrePotions = new HashMap<>();
-    private ArrayList<IntervallePotion> intervallesPotions; // Comme un tableau à 2 entrées (valeur : intervalle entre les 2 potions)
+    private ArrayList<IntervallePotion> intervalleDePrisesPotions; // Comme un tableau à 2 entrées (valeur : intervalle entre les 2 potions)
+    // private Quartier quartiers;
 
-    public App() { }
+    public Village() { }
 
     public boolean inscrirePotion(String nom, String effet, HashMap<Potion, Integer> intervalles, ArrayList<Dose> doses, ArrayList<String> caracteristiques){
         if (this.existePotion(nom)){
@@ -36,7 +37,7 @@ public class App {
     public boolean ajoutePotion(Potion potion1,  HashMap<Potion, Integer> intervalles) {
         for (Potion potion2 : intervalles.keySet()){
             IntervallePotion intervallePotion = new IntervallePotion(potion1, potion2, intervalles.get(potion2));
-            this.intervallesPotions.add(intervallePotion);
+            this.intervalleDePrisesPotions.add(intervallePotion);
         }
         return true;
     }
@@ -82,7 +83,7 @@ public class App {
     }
 
     public IntervallePotion getIntervalle(Potion potion1, Potion potion2) {
-        for (IntervallePotion intervallePotion : this.intervallesPotions) {
+        for (IntervallePotion intervallePotion : this.intervalleDePrisesPotions) {
             if (intervallePotion.estCeluiDe(potion1, potion2)) {
                 return intervallePotion;
             }
